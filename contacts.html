@@ -196,10 +196,15 @@
 
     <!-- Optional: Place to the bottom of scripts -->
     <script>
-      const myModal = new bootstrap.Modal(
-        document.getElementById("modalLogin"),
-        options
-      );
+      document.addEventListener("DOMContentLoaded", function () {
+        const modalElement = document.getElementById("modalLogin");
+        const options = {
+          backdrop: "static",
+          keyboard: false,
+        };
+
+        const myModal = new bootstrap.Modal(modalElement, options);
+      });
     </script>
     <!-- Bootstrap JavaScript Libraries -->
     <script

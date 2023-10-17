@@ -33,6 +33,11 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="CSS/21810052.css" />
   </head>
@@ -57,12 +62,12 @@
           </button>
           <div class="collapse navbar-collapse" id="menu-header">
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="index.html" aria-current="page"
                   >Home <span class="visually-hidden">(current)</span></a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="about.html">About</a>
               </li>
               <li class="nav-item">
@@ -102,6 +107,7 @@
       </nav>
     </header>
     <main>
+      <section id="banner-small"></section>
       <section class="container py-5">
         <h1>About Us</h1>
       </section>
@@ -109,12 +115,10 @@
     <footer class="container-fluid text-white text-center py-3">
       <ul class="nav justify-content-center py-3" id="menu-footer">
         <li class="nav-item">
-          <a class="nav-link active" href="index.html" aria-current="page"
-            >Home</a
-          >
+          <a class="nav-link" href="index.html" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link active" href="about.html">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="gallery.html">Gallery</a>
@@ -196,10 +200,15 @@
 
     <!-- Optional: Place to the bottom of scripts -->
     <script>
-      const myModal = new bootstrap.Modal(
-        document.getElementById("modalLogin"),
-        options
-      );
+      document.addEventListener("DOMContentLoaded", function () {
+        const modalElement = document.getElementById("modalLogin");
+        const options = {
+          backdrop: "static",
+          keyboard: false,
+        };
+
+        const myModal = new bootstrap.Modal(modalElement, options);
+      });
     </script>
     <!-- Bootstrap JavaScript Libraries -->
     <script

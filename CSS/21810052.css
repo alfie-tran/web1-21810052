@@ -117,3 +117,13 @@ footer{
     background-color: var(--web1-blue);
     color: white;
 }
+
+/*Testimonials*/
+#testimonials {
+    background-color: var(--web1-pink);
+
+}
+#testimonials .col{
+    background: url('../images/quot.png') left top no-repeat;
+    padding-left: 3rem;
+}

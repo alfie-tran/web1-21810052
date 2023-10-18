@@ -158,33 +158,8 @@
       </section>
 
       <!-- products -->
-      <section class="container py-5">
-        <div class="row text-center">
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <img src="images/icon-1.png" alt="Coffee" />
-            <h3>Coffee</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a class="readmore btn btn-link pt-0" href="#">Read more</a>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <img src="images/icon-2.png" alt="Drinks" />
-            <h3>Drinks</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a class="readmore btn btn-link pt-0" href="#">Read more</a>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <img src="images/icon-3.png" alt="Cakes" />
-            <h3>Cakes</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a class="readmore btn btn-link pt-0" href="#">Read more</a>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <img src="images/icon-4.png" alt="Ice-creams" />
-            <h3>Ice-creams</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a class="readmore btn btn-link pt-0" href="#">Read more</a>
-          </div>
-        </div>
+      <section class="container py-5" id="products">
+        
       </section>
 
       <!-- about us -->
@@ -356,5 +331,24 @@
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
+    <!-- HandlebarJS -->    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/21810052.js"></script>
+    <script id="products-template" type="text/x-handlebars-template">
+        <div class="row text-center">
+          {{#each data}}
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <img src="{{imagespath}}" alt="{{name}}" />
+            <h3>{{name}}</h3>
+            <p>{{summary}}</p>
+            <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+          </div>
+          {{/each}}
+        </div>
+    </script>
+    <script>
+      loadData('products', 'products-template', 'products');
+    </script>
+
   </body>
 </html>

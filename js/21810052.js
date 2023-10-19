@@ -1,4 +1,4 @@
-const API = 'https://web1-21810052.vercel.app/api';
+const API = "https://web1-21810052.vercel.app/api";
 async function loadData(request, templateId, viewId){
         const response = await fetch(`${API}/{request}`);
         const data = await response.json();
@@ -8,6 +8,5 @@ async function loadData(request, templateId, viewId){
 
         var context = { data : data };
         var view = document.getElementById('viewId');
-        view.innerHTML = template(context);
-        
+        view.innerHTML = template(context);        
       }

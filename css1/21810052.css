@@ -77,15 +77,25 @@ h1 {
     background-color: var(--web1-green);
 }
 
+#banner-small{
+    background-image: url('../images/bg-banner.gif');
+    padding: 5px;
+}
 /*products*/
 .readmore{
     color: var(--web1-blue);
     margin-top: -3px !important;
 }
+.web1-text-blue{
+    color: var(--web1-blue);
+}
 
 /*about us*/
 #aboutus{
     background-color: var(--web1-pink);
+}
+#about-us h4{
+    color:black;
 }
 
 #formSignUp{
@@ -94,6 +104,8 @@ h1 {
 }
 #news .date{
     background-color: var(--web1-green);
+    width: 5rem;
+    padding: 1.5rem;
 }
 
 /*footer*/
@@ -126,4 +138,20 @@ footer{
 #testimonials .col{
     background: url('../images/quot.png') left top no-repeat;
     padding-left: 3rem;
+}
+
+/*Blogs */
+#blogs-categories li{
+    list-style-type: none;
+    background: url('../images/marker1.png') 0 0.25rem no-repeat;
+    padding: 0 0 0.75rem 1.5rem;
+}
+
+#map{
+    height: 400px;
+    width: 100%;
+}
+.btn-primary{
+    background-color: var(--web1-blue) !important;
+    border: none;
 }

@@ -39,7 +39,7 @@
 		/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-		<link rel="stylesheet" href="css1/21810052.css" />
+		<link rel="stylesheet" href="css1/21810052.min.css" />
 	</head>
 
 	<body>
@@ -49,70 +49,38 @@
 					<a class="navbar-brand" href="index.html">
 						<img src="images/logo.png" alt="Web1 Logo" />
 					</a>
-					<button
-						class="navbar-toggler d-lg-none"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#menu-header"
-						aria-controls="menu-header"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
+					<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+						data-bs-target="#menu-header" aria-controls="menu-header" aria-expanded="false"
+						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="menu-header">
 						<ul class="navbar-nav ms-auto mt-2 mt-lg-0">
 							<li class="nav-item">
-								<a
-									class="nav-link"
-									href="index.html"
-									aria-current="page"
-									>Home
-									<span class="visually-hidden"
-										>(current)</span
-									></a
-								>
+								<a class="nav-link" href="index.html" aria-current="page">
+									Home <span class="visually-hidden">(current)</span></a>
 							</li>
 							<li class="nav-item active">
 								<a class="nav-link" href="about.html">About</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="gallery.html"
-									>Gallery</a
-								>
+								<a class="nav-link" href="gallery.html">Gallery</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="blogs.html">Blogs</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="contacts.html"
-									>Contacts</a
-								>
+								<a class="nav-link" href="contacts.html">Contacts</a>
 							</li>
 							<li class="nav-item">
-								<a
-									class="nav-link"
-									href="#"
-									data-bs-toggle="modal"
-									data-bs-target="#modalLogin"
-									>Login</a
-								>
+								<a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+								<a class="nav-link linkLogout" href="#" onclick="logout()" style="display: none">Logout</a>
 							</li>
 						</ul>
-						<form
-							class="d-flex my-2 my-lg-0 border rounded-pill"
-							id="formSearch"
-						>
-							<input
-								class="form-control ms-3 border-0"
-								type="text"
-								placeholder="Search"
-							/>
-							<button
-								class="btn my-2 my-sm-0 border-0"
-								type="submit"
-							>
-								<i class="fa-solid fa-magnifying-glass"></i>
+						<form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET" action="search.html">
+							<input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword" required/>
+							<button class="btn my-2 my-sm-0 border-0" type="submit">
+							  <i class="fa-solid fa-magnifying-glass"></i>
 							</button>
 						</form>
 					</div>
@@ -121,7 +89,9 @@
 		</header>
 		<main>
 			<section id="banner-small"></section>
-			<div id="content">
+
+			<div id="content"></div>
+			<div id="main">
 				<section class="container py-5">
 					<div class="row">
 						<div class="col-md-8 col-sm-12" id="about-us"></div>
@@ -129,10 +99,7 @@
 					</div>
 				</section>
 				<!-- testimonials -->
-				<section
-					class="container-fluid py-5"
-					id="testimonials"
-				></section>
+				<section class="container-fluid py-5" id="testimonials"></section>
 
 				<!-- our team -->
 				<section id="our-team" class="container"></section>
@@ -141,9 +108,7 @@
 		<footer class="container-fluid text-white text-center py-3">
 			<ul class="nav justify-content-center py-3" id="menu-footer">
 				<li class="nav-item">
-					<a class="nav-link" href="index.html" aria-current="page"
-						>Home</a
-					>
+					<a class="nav-link" href="index.html" aria-current="page">Home</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" href="about.html">About</a>
@@ -158,14 +123,8 @@
 					<a class="nav-link" href="contacts.html">Contacts</a>
 				</li>
 				<li class="nav-item">
-					<a
-						class="nav-link"
-						href="#"
-						data-bs-toggle="modal"
-						data-bs-target="#modalLogin"
-					>
-						Login
-					</a>
+					<a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+					<a class="nav-link linkLogout" href="#" onclick="logout()" style="display: none">Logout</a>
 				</li>
 			</ul>
 			<p class="text-white-50">
@@ -176,55 +135,34 @@
 		<!-- Modal Login -->
 		<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
 		<div
-			class="modal fade"
-			id="modalLogin"
-			tabindex="-1"
-			data-bs-backdrop="static"
-			data-bs-keyboard="false"
-			role="dialog"
-			aria-labelledby="modalTitleId"
-			aria-hidden="true"
-		>
-			<div
-				class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
-				role="document"
-			>
+			class="modal fade" id="modalLogin" tabindex="-1" data-bs-backdrop="static"
+			data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+				role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<form action="#" method="post" id="formLogin">
+						<form action="#" method="post" id="formLogin" onsubmit="login(event)">
 							<h3 class="text-center">Login Form</h3>
 							<div class="mb-3">
-								<input
-									type="text"
-									name="username"
-									id="username"
-									placeholder="Username"
-									class="form-control"
-								/>
+								<input type="text" name="username" id="username" placeholder="Username"
+									class="form-control"/>
 							</div>
 							<div class="mb-3">
-								<input
-									type="password"
-									name="password"
-									id="password"
-									placeholder="Password"
-									class="form-control"
-								/>
+								<input type="password" name="password" id="password" placeholder="Password"
+									class="form-control"/>
 							</div>
 							<button type="submit" class="form-control btn">
 								Login
 							</button>
 						</form>
 					</div>
-					<div class="modal-footer"></div>
+					<div class="modal-footer justify-content-center">
+						<div class="text-danger" id="errorMessage"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -254,115 +192,47 @@
 			crossorigin="anonymous"
 		></script>
 		<!-- HandlebarJS -->
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
-			integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		></script>
-		<script src="js/21810052.js"></script>
-		<script id="about-us-template" type="text/x-handlebars-template">
-			{{#each data}}
-				<h1 class="py-3">{{name}}</h1>
-				<div>
-					<img
-						src="{{thumbpath}}"
-						alt="{{name}}"
-						class="float-start rounded-4 me-3"
-					/>
-					<div class="text-black-50">
-						{{{summary}}}
-					</div>
-					<a
-						href="#"
-						class="btn btn-link readmore ps-0"
-						onclick="loadData('aboutus/{{id}}', 'details-template', 'content')"
-					>Read more</a>
-				</div>
-			{{/each}}
-		</script>
-		<script id="our-visions-template" type="text/x-handlebars-template">
-			<h1 class="py-3">Our vision</h1>
-			{{#each data}}
-				<div class="clearfix mb-3">
-					<a
-						class="text-decoration-none"
-						href="#"
-						onclick="loadData('visions/{{id}}', 'details-template', 'content')"
-					>
-						<img
-							src="{{thumbpath}}"
-							alt="{{name}}"
-							class="float-start me-3 rounded-4"
-						/>
-						<h3 class="text-black">{{name}}</h3>
-						<p class="text-black-50">
-							{{summary}}
-						</p>
-					</a>
-				</div>
-			{{/each}}
-		</script>
-		<script id="testimonials-template" type="text/x-handlebars-template">
-			<div class="container">
-				<h1 class="text-white">Testimonials</h1>
-				<div class="row py-3">
-					<div class="col">
-						{{#each data}}
-							<p class="text-black-50">
-								{{summary}}
-							</p>
-							<span class="text-white">{{name}}</span><br />
-							<a href="#">{{email}}</a>
-						{{/each}}
-					</div>
-
-				</div>
-			</div>
-		</script>
-		<script id="our-team-template" type="text/x-handlebars-template">
-			<h1>Our Team</h1>
-			<div class="row py-3">
-				{{#each data}}
-					<div class="col">
-						<a
-							href="#"
-							class="text-decoration-none"
-							onclick="loadData('team/{{id}}', 'details-template', 'content')"
-						>
-							<img
-								src="{{thumbpath}}"
-								alt="{{name}}"
-								class="rounded-4 mb-3 img-fluid"
-							/>
-							<h4 class="text-black">{{name}}</h4>
-							<p class="text-black-50">
-								{{summary}}
-							</p>
-						</a>
-					</div>
-
-				{{/each}}
-			</div>
-		</script>
-		<script id="details-template" type="text/x-handlebars-template">
-			<div class="container py-5 overflow-auto">
-				{{#each data}}
-					<h1 class="py-3">{{name}}</h1>
-					<img
-						src="{{imagepath}}"
-						alt="{{name}}"
-						class="float-start rounded-4 me-3"
-					/>
-					<p>{{{description}}}</p>
-				{{/each}}
-			</div>
-		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.runtime.min.js" 
+			integrity="sha512-WUaZk9J3oknQdKPT2wAfA0gEBG2371l1ACjiynLA/X28p07n1u59VFk7q1i83/bo7N9rqVdYKlnvwAAiwL36jQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="js/about.templates.min.js"></script>
+		<script src="js/21810052.min.js"></script>
+		
 		<script>
-			loadData("aboutus", "about-us-template", "about-us");
-			loadData("visions", "our-visions-template", "our-visions");
-			loadData("testimonials", "testimonials-template", "testimonials");
-			loadData("team", "our-team-template", "our-team");
+			checkLogin();
+			if(location.hash == "" || location.hash == "#"){
+				loadPage();
+			}
+			else{
+				// console.log(location.hash);
+				loadDetails(location.hash.substr(1), "details-template", "content");
+			}			
+
+			function loadPage(){
+				document.getElementById("main").style.display = "block";
+				document.getElementById("content").style.display = "none";
+				loadData("aboutus", "about-us-template", "about-us");
+				loadData("visions", "our-visions-template", "our-visions");
+				loadData("testimonials", "testimonials-template", "testimonials");
+				loadData("team", "our-team-template", "our-team");
+				history.replaceState({loadPage: 1}, null, location.href);
+			}
+
+			async function loadDetails(request, templateId, viewId){
+				document.getElementById("main").style.display = "none";
+				document.getElementById("content").style.display = "block";
+				await loadData(request, templateId, viewId);
+				history.replaceState({request, templateId, viewId}, null, location.href);
+			}
+
+			window.onpopstate = (event) =>{
+				let state = event.state;
+				if(state && state.loadPage){
+					loadPage();
+				}
+				else if(state && state.request){
+					loadDetails(state.request, state.templateId, state.viewId);
+				}
+			}
 		</script>
 	</body>
 </html>

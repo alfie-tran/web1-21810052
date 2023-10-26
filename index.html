@@ -4,10 +4,7 @@
     <title>21810052 - WEB1 Project</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -33,7 +30,7 @@
       crossorigin="anonymous"
     />
     <!-- web1 css-->
-    <link rel="stylesheet" href="css1/21810052.css" />
+    <link rel="stylesheet" href="css1/21810052.min.css" />
   </head>
   <body>
     <header class="container">
@@ -73,18 +70,12 @@
                 <a class="nav-link" href="contacts.html">Contacts</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogout" href="#" onclick="logout()" style="display: none">Logout</a>
               </li>
             </ul>
-            <form
-              class="d-flex my-2 my-lg-0 border rounded-pill"
-              id="formSearch"
-            >
-              <input
-                class="form-control ms-3 border-0"
-                type="text"
-                placeholder="Search"
-              />
+            <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET" action="search.html">
+              <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword" required/>
               <button class="btn my-2 my-sm-0 border-0" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
@@ -229,7 +220,8 @@
             <a class="nav-link" href="contacts.html">Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+            <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+            <a class="nav-link linkLogout" href="#" onclick="logout()" style="display: none">Logout</a>
           </li>          
       </ul>
       <p class="text-white-50">Copyright &copy: 2023 by Tran Hang Vi - 21810052</p>
@@ -240,26 +232,27 @@
     <div class="modal fade" id="modalLogin" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            
+          <div class="modal-header">            
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="#" method="post" id="formLogin">
+            <form action="#" method="post" id="formLogin" onsubmit="login(event)">
               <h3 class="text-center">Login Form</h3>
               <div class="mb-3">
-                <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                <input type="text" name="username" id="username" placeholder="Username" 
+                class="form-control" required>
               </div>
 
               <div class="mb-3">
-                <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                <input type="password" name="password" id="password" placeholder="Password" 
+                class="form-control" required>
               </div>
 
               <button type="submit" class="form-control btn">Login</button>
             </form>
           </div>
-          <div class="modal-footer">
-            
+          <div class="modal-footer justify-content-center">
+            <div class="text-danger" id="errorMessage"></div>
           </div>
         </div>
       </div>
@@ -292,54 +285,23 @@
       crossorigin="anonymous"
     ></script>
     <!-- HandlebarJS -->    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/21810052.js"></script>
-    <script id="products-template" type="text/x-handlebars-template">
-        <div class="row text-center py-5">
-          {{#each data}}
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <img src="{{imagepath}}" alt="{{name}}" onmouseover="setActiveImagepath(this, '{{imagepath}}')"
-            onmouseout="setActiveImagepath(this, '{{imagepath}}', false)"/>
-            <h3>{{name}}</h3>
-            <p class="text-black-50">{{summary}}</p>
-            <a class="readmore btn btn-link pt-0" href="#" 
-            onclick="loadData('products/{{id}}', 'details-template', 'content')">Read more</a>
-          </div>
-          {{/each}}
-        </div>
-    </script>
-    <script id="news-template" type="text/x-handlebars-template">
-      <h1 class="text-black-10">News</h1>
-        <div class="row py-3">
-          {{#each data}}
-          <div class="col">
-            <div class="float-start me-3">
-              <div class="date text-white text-center rounded-4 py-1">
-                <h3>{{date}}</h3>
-              </div>
-              <a href="#" class="btn btn-link readmore ps-0"
-              onclick="loadData('news/{{id}}', 'details-template', 'content')">Read more</a>
-            </div>
-            <div>
-              <h3>{{name}}</h3>
-              <p class="text-black-50">{{summary}}</p>
-            </div>
-          </div>
-          {{/each}}
-        </div>
-    </script>
-    <script id="details-template" type="text/x-handlebars-template">
-      <section class="container-fluid" id="banner-small"></section>
-      {{#each data}}
-      <section class="container py-5">
-        <h1 class="pb-3">{{name}}</h1>
-        <div class="text-black-50">{{{description}}}</div>
-      </section>
-      {{/each}}
-    </script>
-    <script>
-      loadData("products", "products-template", "products");
-      loadData("news", "news-template", "news");
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.runtime.min.js" 
+      integrity="sha512-WUaZk9J3oknQdKPT2wAfA0gEBG2371l1ACjiynLA/X28p07n1u59VFk7q1i83/bo7N9rqVdYKlnvwAAiwL36jQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/index.templates.min.js"></script>
+    <script src="js/21810052.min.js"></script>
+    
+    <script>      
+      let searchParams = new URLSearchParams(location.search);
+      let request = searchParams.get("request");
+      if(request){
+        loadData(request, "details-template", "content");
+      }      
+      else{
+        checkLogin();
+        loadData("products", "products-template", "products");
+        loadData("news", "news-template", "news");
+      }
+      
 
       function setActiveImagepath(img, imagepath, isActive = true){
         if(isActive){
